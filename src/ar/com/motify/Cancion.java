@@ -46,4 +46,8 @@ public class Cancion {
 		this.genero = genero;
 	}
 
+	public String reproducir() {
+		return "Reproduciendo... " + titulo + " - " + artista;
+	}
+
 }
