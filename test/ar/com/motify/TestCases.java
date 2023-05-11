@@ -7,8 +7,21 @@ import org.junit.Test;
 public class TestCases {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void queSePuedaInstanciarUnaCancion() {
+		// Preparación
+		Cancion cancion;
+		final String TITULO = "Té para tres";
+		final String ARTISTA = "Soda stereo";
+		final Integer DURACION_EN_SEGUNDOS = 184;
+		final Genero GENERO = Genero.ROCK;
+		
+		// Ejecución
+		cancion = new Cancion(TITULO, ARTISTA, DURACION_EN_SEGUNDOS, GENERO);
+		
+		// Validación
+		assertNull(cancion);
+		assertEquals(TITULO, cancion.getTitulo());
+	
 	}
 
 }
