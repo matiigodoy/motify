@@ -19,7 +19,7 @@ public class TestCases {
 		cancion = new Cancion(TITULO, ARTISTA, DURACION_EN_SEGUNDOS, GENERO);
 		
 		// Validación
-		assertNull(cancion);
+		assertNotNull(cancion);
 		assertEquals(TITULO, cancion.getTitulo());
 	
 	}
