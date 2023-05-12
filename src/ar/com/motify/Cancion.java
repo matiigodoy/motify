@@ -52,6 +52,13 @@ public class Cancion {
 	public Integer getDuracionEnSegundos() {
 		return duracionEnSegundos;
 	}
+	
+	public String getDuracionEnMinutosYSegundos() {
+		Integer minutos = duracionEnSegundos/60;
+		Integer segundos = duracionEnSegundos%60;
+		String duracionEnMmSs = minutos + ":" + segundos;
+		return duracionEnMmSs;
+	}
 
 	public void setDuracionEnSegundos(Integer duracionEnSegundos) {
 		this.duracionEnSegundos = duracionEnSegundos;
