@@ -11,17 +11,16 @@ public class UsuarioFinalTest {
 	public void queSePuedaInstanciarUnUsuarioFinal() {
 		// Preparación
 		UsuarioFinal usuarioFinal;
-		final String USUARIO = "Mora555";
 		final String NOMBRE = "Mora";
 		final String EMAIL = "mora@gmail.com";
 		final String PASSWORD = "*****";
 
 		// Ejecución
-		usuarioFinal = new UsuarioFinal(USUARIO, NOMBRE, EMAIL, PASSWORD);
+		usuarioFinal = new UsuarioFinal(NOMBRE, EMAIL, PASSWORD);
 
 		// Validación
 		assertNotNull(usuarioFinal);
-		assertEquals(USUARIO, usuarioFinal.getUsuario());
+		assertEquals(EMAIL, usuarioFinal.getEmail());
 	}
 
 }

@@ -27,7 +27,7 @@ public class BaseDeDatosTest {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
 		Distribuidora distribuidora;
-		distribuidora = new Distribuidora("301234567892", "Music Distr", "upload@musicdistr.com", "pass123456");
+		distribuidora = new Distribuidora("Music Distr", "upload@musicdistr.com", "pass123456");
 		final Integer CANTIDAD_DISTRIBUIDORAS_ESPERADAS = 1;
 
 		// Ejecución
@@ -42,7 +42,7 @@ public class BaseDeDatosTest {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
 		UsuarioFinal usuarioFinal;
-		usuarioFinal = new UsuarioFinal("mora55", "Mora", "mora@gmail.com", "****");
+		usuarioFinal = new UsuarioFinal("Mora", "mora@gmail.com", "****");
 
 		final Integer CANTIDAD_USUARIOS_ESPERADOS = 1;
 
@@ -51,5 +51,21 @@ public class BaseDeDatosTest {
 
 		// Validación
 		assertEquals(CANTIDAD_USUARIOS_ESPERADOS, bbdd.getCantidadDeUsuariosFinales());
+	}
+	
+	@Test
+	public void queNoHayaDosUsuariosConMismoEmail() {
+		// preparacion
+		BaseDeDatos bbdd = new BaseDeDatos();
+		UsuarioFinal usuario = new UsuarioFinal("Mora", "mora@gmail.com", "***");
+		UsuarioFinal usuario2 = new UsuarioFinal("Pepe", "mora@gmail.com", "***");
+		
+		// ejecucion
+		bbdd.agregarUsuarioFinal(usuario);
+		bbdd.agregarUsuarioFinal(usuario2);
+		final Integer CANTIDAD_USUARIOS_FINALES = 1;
+		
+		// validacion
+		assertEquals(CANTIDAD_USUARIOS_FINALES, bbdd.getCantidadDeUsuariosFinales());
 	}
 }

@@ -1,26 +1,36 @@
 package ar.com.motify;
 
+import java.util.Objects;
+
 abstract class Usuario {
-	protected String usuario;
+	
 	protected String nombre;
 	protected String email;
 	protected String contraseña;
 	protected Boolean estaLogueado;
 
-	public Usuario(String usuario, String nombre, String email, String contraseña) {
-		this.usuario = usuario;
+	public Usuario(String nombre, String email, String contraseña) {
 		this.nombre = nombre;
 		this.email = email;
 		this.contraseña = contraseña;
 		this.estaLogueado = false;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	@Override
+	public int hashCode() {
+		return Objects.hash(email);
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(email, other.email);
 	}
 
 	public String getNombre() {
@@ -57,6 +67,6 @@ abstract class Usuario {
 
 	public abstract String mostrarInformacion();
 
-	public abstract Boolean login(String usuario, String contraseña);
+	public abstract Boolean login(String email, String contraseña);
 
 }

@@ -3,19 +3,19 @@ package ar.com.motify;
 public class Distribuidora extends Usuario{
 
 	
-	public Distribuidora(String usuario, String nombre, String email, String contraseña) {
-		super(usuario, nombre, email, contraseña);
+	public Distribuidora(String nombre, String email, String contraseña) {
+		super(nombre, email, contraseña);
 	}
 
 
 	@Override
 	public String mostrarInformacion() {
-	    return "-CUIT: " + getUsuario() + "\n-Nombre: " + getNombre() + "\n-Email: " + getEmail();
+	    return "-Nombre: " + getNombre() + "\n-Email: " + getEmail();
 	}
 	
 	@Override
-	public Boolean login(String usuario, String contraseña) {
-		if(usuario.equals(getUsuario()) && contraseña.equals(getContraseña())) {
+	public Boolean login(String email, String contraseña) {
+		if(email.equals(getEmail()) && contraseña.equals(getContraseña())) {
 			System.out.println("¡Inicio de sesión correcto!");
 			System.out.println("Bienvenido " + getNombre());
 			return true;

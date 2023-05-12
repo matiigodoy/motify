@@ -10,24 +10,23 @@ public class DistribuidoraTest {
 	public void queSePuedaInstanciarUnaDistribuidora() {
 		// Preparación
 		Distribuidora distribuidora;
-		final String USUARIO = "30123456789";
 		final String NOMBRE = "Music Distr";
 		final String EMAIL = "upload@musicdistr.com";
 		final String CONTRASEÑA = "pass123456";
 
 		// Ejecución
-		distribuidora = new Distribuidora(USUARIO, NOMBRE, EMAIL, CONTRASEÑA);
+		distribuidora = new Distribuidora(NOMBRE, EMAIL, CONTRASEÑA);
 
 		// Validación
 		assertNotNull(distribuidora);
-		assertEquals(USUARIO, distribuidora.getUsuario());
+		assertEquals(EMAIL, distribuidora.getEmail());
 	}
 
 	@Test
 	public void queUnaDistribuidoraPuedaSubirUnaCancion() {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
-		Distribuidora distribuidora = new Distribuidora("301234567892", "Music Distr", "upload@musicdistr.com",
+		Distribuidora distribuidora = new Distribuidora("Music Distr", "upload@musicdistr.com",
 				"pass123456");
 		Cancion cancion;
 		cancion = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
