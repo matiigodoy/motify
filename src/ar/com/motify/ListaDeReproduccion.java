@@ -16,6 +16,34 @@ public class ListaDeReproduccion {
 	public void agregarCanciones(Cancion cancion) {
 		canciones.add(cancion);
 	}
+	
+	public String reproducirCancion() {
+		return canciones.get(0).getTitulo() + " se esta reproduciendo";
+	}
+	
+	public String verListadoDeCanciones() {
+		String listado = "";
+		for (Cancion cancion : canciones) {
+			listado = cancion.toString();
+		}
+		return listado;
+	}
+	
+	public Integer cantidadDeCanciones() {
+		return canciones.size();
+	}
+	
+	public Long duracionDeLaLista() {
+		Long duracion = 0L;
+		for (Cancion cancion : canciones) {
+			duracion += cancion.getDuracionEnSegundos();
+		}
+		return duracion;
+	}
+	
+	public Boolean eliminarCancion(Cancion cancion) {
+		return canciones.remove(cancion);
+	}
 
 	public String getNombre() {
 		return nombre;
