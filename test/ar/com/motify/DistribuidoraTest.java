@@ -14,29 +14,45 @@ public class DistribuidoraTest {
 		final String NOMBRE = "Music Distr";
 		final String EMAIL = "upload@musicdistr.com";
 		final String CONTRASEÑA = "pass123456";
-				
+
 		// Ejecución
 		distribuidora = new Distribuidora(USUARIO, NOMBRE, EMAIL, CONTRASEÑA);
-				
+
 		// Validación
 		assertNotNull(distribuidora);
 		assertEquals(USUARIO, distribuidora.getUsuario());
 	}
-	
-	
+
 	@Test
 	public void queUnaDistribuidoraPuedaSubirUnaCancion() {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
-		Distribuidora distribuidora = new Distribuidora("301234567892", "Music Distr", "upload@musicdistr.com", "pass123456");
+		Distribuidora distribuidora = new Distribuidora("301234567892", "Music Distr", "upload@musicdistr.com",
+				"pass123456");
 		Cancion cancion;
 		cancion = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
 		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
-				
+
 		// Ejecución
-		distribuidora.subirCancion(bbdd,cancion);
-				
+		distribuidora.subirCancion(bbdd, cancion);
+
 		// Validación
+		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, bbdd.getCantidadDeCanciones());
+	}
+
+	@Test
+	public void queNoHayaDosCancionesConMismoTituloYNombre() {
+		// preparacion
+		BaseDeDatos bbdd = new BaseDeDatos();
+		Cancion cancion1 = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
+		Cancion cancion2 = new Cancion("Té para tres", "Soda stereo", 180, Genero.CUMBIA);
+		
+		// ejecucion
+		bbdd.agregarCancion(cancion1);
+		bbdd.agregarCancion(cancion2);
+		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
+		
+		// validacion
 		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, bbdd.getCantidadDeCanciones());
 	}
 

@@ -5,10 +5,12 @@ import java.util.HashSet;
 public class BaseDeDatos {
 	private HashSet<Cancion> listaDeCanciones;
 	private HashSet<Distribuidora> listaDeDistribuidoras;
+	private HashSet<UsuarioFinal> listaDeUsuariosFinales;
 	
 	public BaseDeDatos() {
 		listaDeCanciones = new HashSet<>();
 		listaDeDistribuidoras = new HashSet<>();
+		listaDeUsuariosFinales = new HashSet<>();
 	}
 	
 	public void agregarCancion(Cancion cancion) {
@@ -37,6 +39,20 @@ public class BaseDeDatos {
 	
 	public Integer getCantidadDeDistribuidoras() {
 		return listaDeDistribuidoras.size();
+	}
+	
+	public void agregarUsuarioFinal(UsuarioFinal usuarioFinal) {
+		listaDeUsuariosFinales.add(usuarioFinal);
+	}
+	
+	public void getListaDeUsuariosFinales() {
+		for (UsuarioFinal usuario : listaDeUsuariosFinales) {
+            System.out.println(usuario.mostrarInformacion());
+        }
+	}
+	
+	public Integer getCantidadDeUsuariosFinales() {
+		return listaDeUsuariosFinales.size();
 	}
 
 	
