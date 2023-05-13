@@ -26,8 +26,7 @@ public class DistribuidoraTest {
 	public void queUnaDistribuidoraPuedaSubirUnaCancion() {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
-		Distribuidora distribuidora = new Distribuidora("Music Distr", "upload@musicdistr.com",
-				"pass123456");
+		Distribuidora distribuidora = new Distribuidora("Music Distr", "upload@musicdistr.com","pass123456");
 		Cancion cancion;
 		cancion = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
 		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
@@ -40,15 +39,17 @@ public class DistribuidoraTest {
 	}
 
 	@Test
-	public void queNoHayaDosCancionesConMismoTituloYNombre() {
+	public void queUnaDistribuidoraNoPuedaSubirCancionConTituloYNombreExistentes() {
 		// preparacion
 		BaseDeDatos bbdd = new BaseDeDatos();
-		Cancion cancion1 = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
-		Cancion cancion2 = new Cancion("Té para tres", "Soda stereo", 180, Genero.CUMBIA);
+		Distribuidora distribuidora = new Distribuidora("Music Distr", "upload@musicdistr.com","pass123456");
+		Distribuidora distribuidora2 = new Distribuidora("DistriMusic", "support@distrimusic.com","pass123456");
+		Cancion cancion1 = new Cancion("Té Para Tres", "Soda Stereo", 184, Genero.ROCK);
+		Cancion cancion2 = new Cancion("Té Para Tres", "Soda Stereo", 180, Genero.CUMBIA);
 		
 		// ejecucion
-		bbdd.agregarCancion(cancion1);
-		bbdd.agregarCancion(cancion2);
+		distribuidora.subirCancion(bbdd,cancion1);
+		distribuidora2.subirCancion(bbdd,cancion2);
 		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
 		
 		// validacion
