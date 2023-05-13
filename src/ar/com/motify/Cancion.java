@@ -69,4 +69,10 @@ public class Cancion {
 		return "Reproduciendo... " + titulo + " - " + artista;
 	}
 
+	@Override
+	public String toString() {
+		return "Cancion [titulo=" + titulo + ", artista=" + artista + ", duracionEnSegundos=" + duracionEnSegundos
+				+ ", genero=" + genero + "]";
+	}
+
 }

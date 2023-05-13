@@ -4,35 +4,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaDeReproduccion {
-	
+
 	private String nombre;
 	private List<Cancion> canciones;
-	
+	private List<Cancion> cancionesDescargadas;
+
 	public ListaDeReproduccion(String nombre) {
 		this.nombre = nombre;
 		this.canciones = new ArrayList();
+		this.cancionesDescargadas = new ArrayList();
 	}
-	
+
+	// O DESCARGAR LISTA??? Y SI QUIERO DESCARGAR TODAS LAS CANCIONES DE LA LISTA
+	// NO ES MEJOR DESCARGAR LA LISTA ??
+	public Boolean descargarCancion(Cancion cancion, UsuarioFinal usuarioFinal) {
+		if (usuarioFinal.getEstaLogueado()) {
+			cancionesDescargadas.add(cancion);
+			return true;
+		}
+		return false;
+	}
+
 	public void agregarCanciones(Cancion cancion) {
-		canciones.add(cancion);
+		if (canciones.size() <= 5) {
+			canciones.add(cancion);
+		}
 	}
-	
+
 	public String reproducirCancion() {
 		return canciones.get(0).getTitulo() + " se esta reproduciendo";
 	}
-	
+
 	public String verListadoDeCanciones() {
-		String listado = "";
 		for (Cancion cancion : canciones) {
-			listado = cancion.toString();
+			String listado = cancion.toString();
+			return listado;
 		}
-		return listado;
+		return null;
 	}
-	
+
 	public Integer cantidadDeCanciones() {
 		return canciones.size();
 	}
-	
+
 	public Long duracionDeLaLista() {
 		Long duracion = 0L;
 		for (Cancion cancion : canciones) {
@@ -40,7 +54,7 @@ public class ListaDeReproduccion {
 		}
 		return duracion;
 	}
-	
+
 	public Boolean eliminarCancion(Cancion cancion) {
 		return canciones.remove(cancion);
 	}
@@ -59,6 +73,10 @@ public class ListaDeReproduccion {
 
 	public void setCanciones(List<Cancion> canciones) {
 		this.canciones = canciones;
+	}
+
+	public List<Cancion> getCancionesDescargadas() {
+		return cancionesDescargadas;
 	}
 
 }
