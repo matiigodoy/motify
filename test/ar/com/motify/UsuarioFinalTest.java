@@ -35,7 +35,7 @@ public class UsuarioFinalTest {
 		// exercise
 		UsuarioFinal usuarioFinal = new UsuarioFinal("mora", email, password);
 		Cancion cancion = new Cancion("Chop suey!", "System Of A Down", 210, Genero.NUMETAL);
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Rock mix");
+		ListaDeReproduccion playlist = new ListaDeReproduccion("Rock mix", "");
 
 		usuarioFinal.login(email, password);
 		Boolean descargaExpected = playlist.descargarCancion(cancion, usuarioFinal);

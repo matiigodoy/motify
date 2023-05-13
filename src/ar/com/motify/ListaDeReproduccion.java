@@ -6,10 +6,11 @@ import java.util.List;
 public class ListaDeReproduccion {
 
 	private String nombre;
+	private String propietario;
 	private List<Cancion> canciones;
 	private List<Cancion> cancionesDescargadas;
 
-	public ListaDeReproduccion(String nombre) {
+	public ListaDeReproduccion(String nombre, String propietario) {
 		this.nombre = nombre;
 		this.canciones = new ArrayList();
 		this.cancionesDescargadas = new ArrayList();
@@ -35,24 +36,15 @@ public class ListaDeReproduccion {
 		return canciones.get(0).getTitulo() + " se esta reproduciendo";
 	}
 
-	public String verListadoDeCanciones() {
+	public void verListadoDeCanciones() {
+		System.out.println("Canciones en la lista " + nombre);
 		for (Cancion cancion : canciones) {
-			String listado = cancion.toString();
-			return listado;
-		}
-		return null;
+            System.out.println(cancion.getTitulo() + " - " + cancion.getArtista());
+        }
 	}
 
 	public Integer cantidadDeCanciones() {
 		return canciones.size();
-	}
-
-	public Long duracionDeLaLista() {
-		Long duracion = 0L;
-		for (Cancion cancion : canciones) {
-			duracion += cancion.getDuracionEnSegundos();
-		}
-		return duracion;
 	}
 
 	public Boolean eliminarCancion(Cancion cancion) {
@@ -77,6 +69,29 @@ public class ListaDeReproduccion {
 
 	public List<Cancion> getCancionesDescargadas() {
 		return cancionesDescargadas;
+	}
+	public String duracionDeLaLista() {
+		Integer duracion = 0;
+		for (Cancion cancion : canciones) {
+			duracion += cancion.getDuracionEnSegundos();
+		}
+		Integer minutos = duracion/60;
+		Integer segundos = duracion%60;
+		String duracionEnMmSs;
+		if(segundos<10) {
+			duracionEnMmSs = minutos + ":0" + segundos;
+		} else {
+			duracionEnMmSs = minutos + ":" + segundos;
+		}
+		return duracionEnMmSs;
+	}
+
+	public String getPropietario() {
+		return propietario;
+	}
+
+	public void setPropietario(String propietario) {
+		this.propietario = propietario;
 	}
 
 }
