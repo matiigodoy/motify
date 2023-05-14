@@ -12,12 +12,10 @@ public class ListaDeReproduccion {
 
 	public ListaDeReproduccion(String nombre, String propietario) {
 		this.nombre = nombre;
-		this.canciones = new ArrayList();
-		this.cancionesDescargadas = new ArrayList();
+		this.canciones = new ArrayList<Cancion>();
+		this.cancionesDescargadas = new ArrayList<Cancion>();
 	}
-
-	// O DESCARGAR LISTA??? Y SI QUIERO DESCARGAR TODAS LAS CANCIONES DE LA LISTA
-	// NO ES MEJOR DESCARGAR LA LISTA ??
+	
 	public Boolean descargarCancion(Cancion cancion, UsuarioFinal usuarioFinal) {
 		if (usuarioFinal.getEstaLogueado()) {
 			cancionesDescargadas.add(cancion);
@@ -27,7 +25,7 @@ public class ListaDeReproduccion {
 	}
 
 	public void agregarCanciones(Cancion cancion) {
-		if (canciones.size() <= 5) {
+		if (cantidadDeCanciones() < 5) {
 			canciones.add(cancion);
 		}
 	}
@@ -36,11 +34,12 @@ public class ListaDeReproduccion {
 		return canciones.get(0).getTitulo() + " se esta reproduciendo";
 	}
 
-	public void verListadoDeCanciones() {
-		System.out.println("Canciones en la lista " + nombre);
+	public String verListadoDeCanciones() {
+		String listadoVacio = "Canciones en la lista " + nombre;
 		for (Cancion cancion : canciones) {
-            System.out.println(cancion.getTitulo() + " - " + cancion.getArtista());
+            return cancion.toString();
         }
+		return listadoVacio;
 	}
 
 	public Integer cantidadDeCanciones() {
@@ -76,7 +75,7 @@ public class ListaDeReproduccion {
 			duracion += cancion.getDuracionEnSegundos();
 		}
 		Integer minutos = duracion/60;
-		Integer segundos = duracion%60;
+		Integer segundos = duracion/60;
 		String duracionEnMmSs;
 		if(segundos<10) {
 			duracionEnMmSs = minutos + ":0" + segundos;

@@ -1,10 +1,26 @@
 package ar.com.motify;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 public class DistribuidoraTest {
+	
+	@Test
+	public void queSePuedaLoguearUnaDistribuidora() {
+		// set up
+		String email = "zannieEntretent@gmail.com";
+		String password = "***";
+		
+		// exercise
+		Distribuidora distribuidora = new Distribuidora("Zannie", email, password);
+		Boolean loginCorrecto = distribuidora.login(email, password);
+		
+		// verify
+		assertTrue(loginCorrecto);
+	}
 
 	@Test
 	public void queSePuedaInstanciarUnaDistribuidora() {
