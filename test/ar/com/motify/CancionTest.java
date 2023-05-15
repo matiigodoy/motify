@@ -15,7 +15,7 @@ public class CancionTest {
 		Cancion cancion = new Cancion("MORE", "The Warning", 184, Genero.ROCK);
 		
 		// verify
-		String duracionEnMinutosExpected = "3:03";
+		String duracionEnMinutosExpected = "3:04";
 		String duracionEnMinutosActual = cancion.getDuracionEnMinutosYSegundos();
 		
 		assertEquals(duracionEnMinutosExpected, duracionEnMinutosActual);

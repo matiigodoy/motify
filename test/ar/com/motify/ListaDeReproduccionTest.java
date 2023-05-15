@@ -20,7 +20,7 @@ public class ListaDeReproduccionTest {
 		
 		
 		// verify
-		String duracionEnMinutosTotalDeLaListaExpected = "6:06";
+		String duracionEnMinutosTotalDeLaListaExpected = "6:36";
 		String duracionEnMinutosTotalDeLaListaActual = playlist.duracionDeLaLista();
 		assertEquals(duracionEnMinutosTotalDeLaListaExpected, duracionEnMinutosTotalDeLaListaActual);
 	}
@@ -44,7 +44,7 @@ public class ListaDeReproduccionTest {
 	}
 
 	@Test
-	public void vReproducirCancion() {
+	public void vReproducirLista() {
 		// set up
 
 		// exercise
@@ -53,7 +53,7 @@ public class ListaDeReproduccionTest {
 
 		playlist.agregarCanciones(cancion);
 
-		String expected = "Toxicity se esta reproduciendo";
+		String expected = "Reproduciendo lista";
 		String actual = playlist.reproducirCancion();
 
 		// verify
@@ -94,7 +94,7 @@ public class ListaDeReproduccionTest {
 	@Test
 	public void queNoSePuedaAgregarMasDe5Canciones() {
 		// set up
-		Integer cantCancionesExpected = 4;
+		final Integer CANTIDAD_ESPERADA_CANCIONES = 5;
 
 		// exercise
 		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", "");
@@ -104,16 +104,17 @@ public class ListaDeReproduccionTest {
 		Cancion cancion3 = new Cancion("Black", "Pearl Jam", 331, Genero.ROCK);
 		Cancion cancion4 = new Cancion("Call It Fate, Call It Karma", "The Strokes", 178, Genero.ROCK);
 		Cancion cancion5 = new Cancion("White Stains", "Messa", 693, Genero.NUMETAL);
+		Cancion cancion6 = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
 
 		playlist.agregarCanciones(cancion1);
 		playlist.agregarCanciones(cancion2);
 		playlist.agregarCanciones(cancion3);
 		playlist.agregarCanciones(cancion4);
-
 		playlist.agregarCanciones(cancion5);
+		playlist.agregarCanciones(cancion6);
 
 		// verify
-		assertEquals(cantCancionesExpected, playlist.cantidadDeCanciones());
+		assertEquals(CANTIDAD_ESPERADA_CANCIONES, playlist.cantidadDeCanciones());
 	}
 
 	@Test
