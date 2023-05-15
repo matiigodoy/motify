@@ -32,6 +32,22 @@ public class ListaDeReproduccion {
 			canciones.add(cancion);
 		}
 	}
+	
+	public void agregarCancion(Cancion cancion, Boolean esPremium) {
+		if(esPremium) {
+			if(canciones.size()<100) {
+				canciones.add(cancion);
+			} else {
+				System.out.println("Alcanzaste el máximo de canciones permitidas (100)");
+			}
+		} else {
+			if(canciones.size()<10) {
+				canciones.add(cancion);
+			} else {
+				System.out.println("Pasate a Premium para agregar hasta 100 canciones!");
+			}
+		}
+	}
 
 	public String reproducirCancion() {
 		//return canciones.get(0).getTitulo() + " se esta reproduciendo";
