@@ -1,18 +1,21 @@
 package ar.com.motify;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class ListaDeReproduccion {
 
 	private String nombre;
 	private String propietario;
-	private List<Cancion> canciones;
+	private HashSet<Cancion> canciones;
 	private List<Cancion> cancionesDescargadas;
 
 	public ListaDeReproduccion(String nombre, String propietario) {
 		this.nombre = nombre;
-		this.canciones = new ArrayList<Cancion>();
+		this.propietario = propietario;
+		canciones = new HashSet<Cancion>();
 		this.cancionesDescargadas = new ArrayList<Cancion>();
 	}
 	
@@ -31,7 +34,9 @@ public class ListaDeReproduccion {
 	}
 
 	public String reproducirCancion() {
-		return canciones.get(0).getTitulo() + " se esta reproduciendo";
+		//return canciones.get(0).getTitulo() + " se esta reproduciendo";
+		//Revisar método. Debemos evitar duplicados por eso usamos HashSet. En este caso, no es posible usar get().
+		return "Reproduciendo lista";
 	}
 
 	public String verListadoDeCanciones() {
@@ -58,11 +63,11 @@ public class ListaDeReproduccion {
 		this.nombre = nombre;
 	}
 
-	public List<Cancion> getCanciones() {
+	public HashSet<Cancion> getCanciones() {
 		return canciones;
 	}
 
-	public void setCanciones(List<Cancion> canciones) {
+	public void setCanciones(HashSet<Cancion> canciones) {
 		this.canciones = canciones;
 	}
 
@@ -92,5 +97,23 @@ public class ListaDeReproduccion {
 	public void setPropietario(String propietario) {
 		this.propietario = propietario;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre, propietario);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ListaDeReproduccion other = (ListaDeReproduccion) obj;
+		return Objects.equals(nombre, other.nombre) && Objects.equals(propietario, other.propietario);
+	}
+	
 
 }

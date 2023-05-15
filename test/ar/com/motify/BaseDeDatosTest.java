@@ -8,6 +8,7 @@ import org.junit.Test;
 public class BaseDeDatosTest {
 
 	@Test
+	// Test Matii
 	public void queSePuedaInstanciarUnaBaseDeDatos() {
 		// Preparación
 		BaseDeDatos bbdd;
@@ -24,6 +25,7 @@ public class BaseDeDatosTest {
 	}
 
 	@Test
+	// Test Matii
 	public void queSePuedaAgregarUnaDistribuidoraABaseDeDatos() {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
@@ -68,5 +70,58 @@ public class BaseDeDatosTest {
 		
 		// validacion
 		assertEquals(CANTIDAD_USUARIOS_FINALES, bbdd.getCantidadDeUsuariosFinales());
+	}
+	@Test
+	// Test Matii
+	public void queNoHayaDosDistribuidorasConMismoEmail() {
+		// Preparación
+		BaseDeDatos bbdd = new BaseDeDatos();
+		Distribuidora distribuidora1 = new Distribuidora("Music Distr", "upload@musicdistr.com", "pass123456");
+		Distribuidora distribuidora2 = new Distribuidora("DistriMusic", "upload@musicdistr.com", "pass123456");
+		
+		// Ejecución
+		bbdd.agregarDistribuidora(distribuidora1);
+		bbdd.agregarDistribuidora(distribuidora2);
+		final Integer CANTIDAD_ESPERADA_DISTRIBUIDORAS = 1;
+		
+		// Validación
+		assertEquals(CANTIDAD_ESPERADA_DISTRIBUIDORAS, bbdd.getCantidadDeDistribuidoras());
+	}
+	@Test
+	// Test Matii
+	public void queSePuedaGuardarListaDeReproduccion() {
+		// Preparación
+		BaseDeDatos bbdd = new BaseDeDatos();
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario.getNombre());
+		Cancion cancion1 = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
+		Cancion cancion2 = new Cancion("Médium", "Gustavo Cerati", 333, Genero.ROCK);
+		lista.agregarCanciones(cancion1);
+		lista.agregarCanciones(cancion2);
+		
+		// Ejecución
+		bbdd.agregarListaDeReproduccion(lista);
+		final Integer CANTIDAD_ESPERADA_LISTAS = 1;
+		
+		// Validación
+		assertEquals(CANTIDAD_ESPERADA_LISTAS, bbdd.getCantidadDeListasDeReproduccion());
+	}
+	
+	@Test
+	// Test Matii
+	public void queNoSePuedaGuardarListaDeReproduccionConMismoNombreYPropietario() {
+		// Preparación
+		BaseDeDatos bbdd = new BaseDeDatos();
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		ListaDeReproduccion lista1 = new ListaDeReproduccion("Hitazos", usuario.getNombre());
+		ListaDeReproduccion lista2 = new ListaDeReproduccion("Hitazos", usuario.getNombre());
+		
+		// Ejecución
+		bbdd.agregarListaDeReproduccion(lista1);
+		bbdd.agregarListaDeReproduccion(lista2);
+		final Integer CANTIDAD_ESPERADA_LISTAS = 1;
+		
+		// Validación
+		assertEquals(CANTIDAD_ESPERADA_LISTAS, bbdd.getCantidadDeListasDeReproduccion());
 	}
 }

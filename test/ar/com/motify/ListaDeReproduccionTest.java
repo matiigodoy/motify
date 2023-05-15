@@ -123,6 +123,7 @@ public class ListaDeReproduccionTest {
 		assertNotNull(playlist);
 	}
 	@Test
+	// Test Matii
 	public void queSePuedaInstanciarListaDeReproduccion() {
 		// Preparación
 		ListaDeReproduccion lista;
@@ -142,6 +143,7 @@ public class ListaDeReproduccionTest {
 	}
 
 	@Test
+	// Test Matii
 	public void queLaDuracionDeLaListaTengaFormatoMmSs() {
 		// Preparación
 		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
