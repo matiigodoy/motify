@@ -122,7 +122,7 @@ public class ListaDeReproduccionTest {
 
 		assertNotNull(playlist);
 	}
-
+	@Test
 	public void queSePuedaInstanciarListaDeReproduccion() {
 		// Preparación
 		ListaDeReproduccion lista;
@@ -148,7 +148,7 @@ public class ListaDeReproduccionTest {
 		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario.getNombre());
 		Cancion cancion1 = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
 		Cancion cancion2 = new Cancion("Médium", "Gustavo Cerati", 333, Genero.ROCK);
-		final String DURACION_ESPERADA = "8:08";
+		final String DURACION_ESPERADA = "8:37";
 
 		// Ejecución
 		lista.agregarCanciones(cancion1);

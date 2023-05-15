@@ -75,7 +75,7 @@ public class ListaDeReproduccion {
 			duracion += cancion.getDuracionEnSegundos();
 		}
 		Integer minutos = duracion/60;
-		Integer segundos = duracion/60;
+		Integer segundos = duracion%60;
 		String duracionEnMmSs;
 		if(segundos<10) {
 			duracionEnMmSs = minutos + ":0" + segundos;

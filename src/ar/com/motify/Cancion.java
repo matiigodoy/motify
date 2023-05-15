@@ -55,7 +55,7 @@ public class Cancion {
 	
 	public String getDuracionEnMinutosYSegundos() {
 		Integer minutos = duracionEnSegundos/60;
-		Integer segundos = duracionEnSegundos/60;
+		Integer segundos = duracionEnSegundos%60;
 		String duracionEnMmSs;
 		if(segundos<10) {
 			duracionEnMmSs = minutos + ":0" + segundos;
