@@ -16,10 +16,10 @@ public class DistribuidoraTest {
 		
 		// exercise
 		Distribuidora distribuidora = new Distribuidora("Zannie", email, password);
-		Boolean loginCorrecto = distribuidora.login(email, password);
+		String loginCorrecto = distribuidora.login(email, password);
 		
 		// verify
-		assertTrue(loginCorrecto);
+		assertEquals(loginCorrecto, "¡Inicio de sesión correcto! \n Bienvenido" + distribuidora.getNombre());
 	}
 
 	@Test

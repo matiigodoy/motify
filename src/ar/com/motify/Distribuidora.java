@@ -14,15 +14,14 @@ public class Distribuidora extends Usuario{
 	}
 	
 	@Override
-	public Boolean login(String email, String contraseña) {
+	public String login(String email, String contraseña) {
+		String respuesta = "";
 		if(email.equals(getEmail()) && contraseña.equals(getContraseña())) {
-			System.out.println("¡Inicio de sesión correcto!");
-			System.out.println("Bienvenido " + getNombre());
-			return true;
+			respuesta = "¡Inicio de sesión correcto! \n Bienvenido" + getNombre();
 		} else {
-			System.out.println("Datos incorrectos. Intente nuevamente.");
-			return false;
+			respuesta = "Datos incorrectos. Intente nuevamente.";
 		}
+		return respuesta;
 	}
 
 

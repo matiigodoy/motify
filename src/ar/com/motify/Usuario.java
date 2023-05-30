@@ -67,6 +67,6 @@ abstract class Usuario {
 
 	public abstract String mostrarInformacion();
 
-	public abstract Boolean login(String email, String contraseña);
+	public abstract String login(String email, String contraseña);
 
 }

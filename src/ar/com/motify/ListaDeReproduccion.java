@@ -15,13 +15,10 @@ public class ListaDeReproduccion {
 		this.canciones = new ArrayList<Cancion>();
 		this.cancionesDescargadas = new ArrayList<Cancion>();
 	}
-	
+
 	public Boolean descargarCancion(Cancion cancion, UsuarioFinal usuarioFinal) {
-		if (usuarioFinal.getEstaLogueado()) {
-			cancionesDescargadas.add(cancion);
-			return true;
-		}
-		return false;
+		cancionesDescargadas.add(cancion);
+		return true;
 	}
 
 	public void agregarCanciones(Cancion cancion) {
@@ -37,8 +34,8 @@ public class ListaDeReproduccion {
 	public String verListadoDeCanciones() {
 		String listadoVacio = "Canciones en la lista " + nombre;
 		for (Cancion cancion : canciones) {
-            return cancion.toString();
-        }
+			return cancion.toString();
+		}
 		return listadoVacio;
 	}
 
@@ -69,15 +66,16 @@ public class ListaDeReproduccion {
 	public List<Cancion> getCancionesDescargadas() {
 		return cancionesDescargadas;
 	}
+
 	public String duracionDeLaLista() {
 		Integer duracion = 0;
 		for (Cancion cancion : canciones) {
 			duracion += cancion.getDuracionEnSegundos();
 		}
-		Integer minutos = duracion/60;
-		Integer segundos = duracion/60;
+		Integer minutos = duracion / 60;
+		Integer segundos = duracion / 60;
 		String duracionEnMmSs;
-		if(segundos<10) {
+		if (segundos < 10) {
 			duracionEnMmSs = minutos + ":0" + segundos;
 		} else {
 			duracionEnMmSs = minutos + ":" + segundos;

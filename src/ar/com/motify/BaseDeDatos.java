@@ -17,10 +17,11 @@ public class BaseDeDatos {
 		listaDeCanciones.add(cancion);
 	}
 
-	public void getListaDeCanciones() {
+	public String getListaDeCanciones() {
 		for (Cancion cancion : listaDeCanciones) {
-            System.out.println(cancion.getTitulo() + " - " + cancion.getArtista());
+            return cancion.getTitulo() + " - " + cancion.getArtista();
         }
+		return null;
 	}
 	
 	public Integer getCantidadDeCanciones() {
@@ -31,10 +32,11 @@ public class BaseDeDatos {
 		listaDeDistribuidoras.add(distribuidora);
 	}
 	
-	public void getListaDeDistribuidoras() {
+	public String getListaDeDistribuidoras() {
 		for (Distribuidora distribuidora : listaDeDistribuidoras) {
-            System.out.println(distribuidora.mostrarInformacion());
+            return distribuidora.mostrarInformacion();
         }
+		return null;
 	}
 	
 	public Integer getCantidadDeDistribuidoras() {
@@ -45,10 +47,11 @@ public class BaseDeDatos {
 		listaDeUsuariosFinales.add(usuarioFinal);
 	}
 	
-	public void getListaDeUsuariosFinales() {
+	public String getListaDeUsuariosFinales() {
 		for (UsuarioFinal usuario : listaDeUsuariosFinales) {
-            System.out.println(usuario.mostrarInformacion());
+            return usuario.mostrarInformacion();
         }
+		return null;
 	}
 	
 	public Integer getCantidadDeUsuariosFinales() {
