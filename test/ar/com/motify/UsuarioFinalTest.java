@@ -7,11 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import ar.com.motify.Cancion;
-import ar.com.motify.Genero;
-import ar.com.motify.ListaDeReproduccion;
-import ar.com.motify.UsuarioFinal;
-
 public class UsuarioFinalTest {
 
 	@Test

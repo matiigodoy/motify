@@ -2,8 +2,6 @@ package ar.com.motify;
 
 import java.util.Objects;
 
-import ar.com.motify.UsuarioFinal;
-
 public class Cancion {
 	
 	private String titulo;
