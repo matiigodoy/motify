@@ -91,10 +91,8 @@ public class Cancion {
 	
 	public Boolean descargar(UsuarioFinal usuario) {
 		if(usuario.getPremium()) {
-			System.out.println("Canción descargada!");
 			return true;
 		}
-		System.out.println("Pasate a Premium para descargar tus canciones favoritas!");
 		return false;
 	}
 

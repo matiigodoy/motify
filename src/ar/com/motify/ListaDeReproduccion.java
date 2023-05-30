@@ -30,20 +30,22 @@ public class ListaDeReproduccion {
 		}
 	}
 	
-	public void agregarCancion(Cancion cancion, Boolean esPremium) {
+	public String agregarCancion(Cancion cancion, Boolean esPremium) {
+		String mensaje = "";
 		if(esPremium) {
 			if(canciones.size()<100) {
 				canciones.add(cancion);
 			} else {
-				System.out.println("Alcanzaste el máximo de canciones permitidas (100)");
+				mensaje = "Alcanzaste el máximo de canciones permitidas (100)";
 			}
 		} else {
 			if(canciones.size()<10) {
 				canciones.add(cancion);
 			} else {
-				System.out.println("Pasate a Premium para agregar hasta 100 canciones!");
+				mensaje = "Pasate a Premium para agregar hasta 100 canciones!";
 			}
 		}
+		return mensaje;
 	}
 
 	public String reproducirCancion() {
