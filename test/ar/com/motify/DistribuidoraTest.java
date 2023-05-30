@@ -23,6 +23,7 @@ public class DistribuidoraTest {
 	}
 
 	@Test
+	// Test Matii
 	public void queSePuedaInstanciarUnaDistribuidora() {
 		// Preparación
 		Distribuidora distribuidora;
@@ -39,6 +40,7 @@ public class DistribuidoraTest {
 	}
 
 	@Test
+	// Test Matii
 	public void queUnaDistribuidoraPuedaSubirUnaCancion() {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
@@ -55,20 +57,21 @@ public class DistribuidoraTest {
 	}
 
 	@Test
+	// Test Matii
 	public void queUnaDistribuidoraNoPuedaSubirCancionConTituloYNombreExistentes() {
-		// preparacion
+		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
 		Distribuidora distribuidora = new Distribuidora("Music Distr", "upload@musicdistr.com","pass123456");
 		Distribuidora distribuidora2 = new Distribuidora("DistriMusic", "support@distrimusic.com","pass123456");
 		Cancion cancion1 = new Cancion("Té Para Tres", "Soda Stereo", 184, Genero.ROCK);
 		Cancion cancion2 = new Cancion("Té Para Tres", "Soda Stereo", 180, Genero.CUMBIA);
 		
-		// ejecucion
+		// Ejecución
 		distribuidora.subirCancion(bbdd,cancion1);
 		distribuidora2.subirCancion(bbdd,cancion2);
 		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
 		
-		// validacion
+		// Validación
 		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, bbdd.getCantidadDeCanciones());
 	}
 

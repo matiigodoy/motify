@@ -26,11 +26,11 @@ public class UsuarioFinal extends Usuario {
 
 	}
 
-	public Boolean getEsPremium() {
+	public Boolean getPremium() {
 		return esPremium;
 	}
 
-	public void setEsPremium(Boolean esPremium) {
+	public void setPremium(Boolean esPremium) {
 		this.esPremium = esPremium;
 	}
 

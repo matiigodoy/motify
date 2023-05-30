@@ -6,11 +6,13 @@ public class BaseDeDatos {
 	private HashSet<Cancion> listaDeCanciones;
 	private HashSet<Distribuidora> listaDeDistribuidoras;
 	private HashSet<UsuarioFinal> listaDeUsuariosFinales;
+	private HashSet<ListaDeReproduccion> listaDeListasDeReproduccion;
 	
 	public BaseDeDatos() {
 		listaDeCanciones = new HashSet<>();
 		listaDeDistribuidoras = new HashSet<>();
 		listaDeUsuariosFinales = new HashSet<>();
+		listaDeListasDeReproduccion = new HashSet<>();
 	}
 	
 	public void agregarCancion(Cancion cancion) {
@@ -58,7 +60,14 @@ public class BaseDeDatos {
 		return listaDeUsuariosFinales.size();
 	}
 
-	
+	public void agregarListaDeReproduccion(ListaDeReproduccion lista) {
+		listaDeListasDeReproduccion.add(lista);
+		
+	}
+
+	public Integer getCantidadDeListasDeReproduccion() {
+		return listaDeListasDeReproduccion.size();
+	}
 	
 
 }

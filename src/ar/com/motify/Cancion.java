@@ -2,6 +2,8 @@ package ar.com.motify;
 
 import java.util.Objects;
 
+import ar.com.motify.UsuarioFinal;
+
 public class Cancion {
 	
 	private String titulo;
@@ -55,7 +57,7 @@ public class Cancion {
 	
 	public String getDuracionEnMinutosYSegundos() {
 		Integer minutos = duracionEnSegundos/60;
-		Integer segundos = duracionEnSegundos/60;
+		Integer segundos = duracionEnSegundos%60;
 		String duracionEnMmSs;
 		if(segundos<10) {
 			duracionEnMmSs = minutos + ":0" + segundos;
@@ -85,6 +87,15 @@ public class Cancion {
 	public String toString() {
 		return "Cancion [titulo=" + titulo + ", artista=" + artista + ", duracionEnSegundos=" + duracionEnSegundos
 				+ ", genero=" + genero + "]";
+	}
+	
+	public Boolean descargar(UsuarioFinal usuario) {
+		if(usuario.getPremium()) {
+			System.out.println("Canción descargada!");
+			return true;
+		}
+		System.out.println("Pasate a Premium para descargar tus canciones favoritas!");
+		return false;
 	}
 
 }
