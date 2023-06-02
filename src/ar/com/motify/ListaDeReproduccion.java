@@ -8,13 +8,13 @@ import java.util.Objects;
 public class ListaDeReproduccion {
 
 	private String nombre;
-	private String propietario;
+	private UsuarioFinal propietario;
 	private HashSet<Cancion> canciones;
 	private List<Cancion> cancionesDescargadas;
 
-	public ListaDeReproduccion(String nombre, String propietario) {
+	public ListaDeReproduccion(String nombre, UsuarioFinal usuario) {
 		this.nombre = nombre;
-		this.propietario = propietario;
+		propietario = usuario;
 		canciones = new HashSet<Cancion>();
 		this.cancionesDescargadas = new ArrayList<Cancion>();
 	}
