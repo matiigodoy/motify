@@ -10,19 +10,13 @@ public class ListaDeReproduccion {
 	private String nombre;
 	private UsuarioFinal propietario;
 	private List<Cancion> canciones;
-	private List<Cancion> cancionesDescargadas;
 
 	public ListaDeReproduccion(String nombre, UsuarioFinal usuario) {
 		this.nombre = nombre;
 		propietario = usuario;
 		canciones = new ArrayList<Cancion>();
-		this.cancionesDescargadas = new ArrayList<Cancion>();
 	}
 
-	public Boolean descargarCancion(Cancion cancion, UsuarioFinal usuarioFinal) {
-		cancionesDescargadas.add(cancion);
-		return true;
-	}
 
 	public void agregarCanciones(Cancion cancion) {
 		if (cantidadDeCanciones() < 5) {
@@ -86,9 +80,6 @@ public class ListaDeReproduccion {
 		this.canciones = canciones;
 	}
 
-	public List<Cancion> getCancionesDescargadas() {
-		return cancionesDescargadas;
-	}
 
 	public String duracionDeLaLista() {
 		Integer duracion = 0;

@@ -1,12 +1,16 @@
 package ar.com.motify;
 
+import java.util.HashSet;
+
 public class UsuarioFinal extends Usuario {
 
 	private Boolean esPremium;
+	private HashSet<Cancion> cancionesDescargadas;
 
 	public UsuarioFinal(String nombre, String email, String contraseña) {
 		super(nombre, email, contraseña);
 		esPremium = false;
+		setCancionesDescargadas(new HashSet<Cancion>());
 	}
 
 	@Override
@@ -34,4 +38,15 @@ public class UsuarioFinal extends Usuario {
 		this.esPremium = esPremium;
 	}
 
+	public HashSet<Cancion> getCancionesDescargadas() {
+		return cancionesDescargadas;
+	}
+
+	public void setCancionesDescargadas(HashSet<Cancion> cancionesDescargadas) {
+		this.cancionesDescargadas = cancionesDescargadas;
+	}
+	
+	public void agregarCancionDescargada(Cancion cancion) {
+		cancionesDescargadas.add(cancion);
+	}
 }

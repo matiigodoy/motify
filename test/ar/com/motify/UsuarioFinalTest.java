@@ -5,6 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
 
 public class UsuarioFinalTest {
@@ -33,12 +35,15 @@ public class UsuarioFinalTest {
 
 		// exercise
 		UsuarioFinal usuarioFinal = new UsuarioFinal("mora", email, password);
+		usuarioFinal.setPremium(true);
 		Cancion cancion = new Cancion("Chop suey!", "System Of A Down", 210, Genero.NUMETAL);
 		ListaDeReproduccion playlist = new ListaDeReproduccion("Rock mix", usuarioFinal);
+		playlist.agregarCancion(cancion, usuarioFinal.getPremium());
 
 		usuarioFinal.login(email, password);
-		Boolean descargaExpected = playlist.descargarCancion(cancion, usuarioFinal);
-
+		List<Cancion> listadoCanciones = playlist.getCanciones();
+		Boolean descargaExpected = listadoCanciones.get(0).descargar(usuarioFinal);
+		
 		// verify
 		assertTrue(descargaExpected);
 	}

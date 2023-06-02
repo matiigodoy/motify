@@ -2,6 +2,10 @@ package ar.com.motify;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashSet;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -57,6 +61,24 @@ public class CancionTest {
 		
 		// Validación
 		assertEquals(VISUALIZACION, cancion.reproducir());
+	
+	}
+	
+	@Test
+	// Test Matii
+	public void queUnaCancionDescargadaSeGuardeEnPerfilUsuario() {
+		// Preparación
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		usuario.setPremium(true);
+		Cancion cancion = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
+		
+		// Ejecución
+		cancion.descargar(usuario);
+		HashSet<Cancion> listadoCancionesDescargadas = usuario.getCancionesDescargadas();
+		
+		
+		// Validación
+		assertTrue(listadoCancionesDescargadas.contains(cancion));
 	
 	}
 

@@ -89,6 +89,7 @@ public class Cancion {
 	
 	public Boolean descargar(UsuarioFinal usuario) {
 		if(usuario.getPremium()) {
+			usuario.agregarCancionDescargada(this);
 			return true;
 		}
 		return false;
