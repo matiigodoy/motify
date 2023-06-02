@@ -106,11 +106,11 @@ public class ListaDeReproduccion {
 		return duracionEnMmSs;
 	}
 
-	public String getPropietario() {
+	public UsuarioFinal getPropietario() {
 		return propietario;
 	}
 
-	public void setPropietario(String propietario) {
+	public void setPropietario(UsuarioFinal propietario) {
 		this.propietario = propietario;
 	}
 

@@ -34,7 +34,7 @@ public class UsuarioFinalTest {
 		// exercise
 		UsuarioFinal usuarioFinal = new UsuarioFinal("mora", email, password);
 		Cancion cancion = new Cancion("Chop suey!", "System Of A Down", 210, Genero.NUMETAL);
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Rock mix", "");
+		ListaDeReproduccion playlist = new ListaDeReproduccion("Rock mix", usuarioFinal);
 
 		usuarioFinal.login(email, password);
 		Boolean descargaExpected = playlist.descargarCancion(cancion, usuarioFinal);
@@ -48,7 +48,7 @@ public class UsuarioFinalTest {
 	public void queUnUsuarioNoPuedaAgregarCancionDuplicadaALista() {
 		// Preparación
 		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
-		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario.getNombre());
+		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario);
 		Cancion cancion = new Cancion("Té Para Tres", "Soda Stereo", 184, Genero.ROCK);
 		
 		// Ejecución
