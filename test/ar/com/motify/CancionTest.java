@@ -61,7 +61,6 @@ public class CancionTest {
 		
 		// Validación
 		assertEquals(VISUALIZACION, cancion.reproducir());
-	
 	}
 	
 	@Test
@@ -79,7 +78,51 @@ public class CancionTest {
 		
 		// Validación
 		assertTrue(listadoCancionesDescargadas.contains(cancion));
+	}
 	
+	@Test
+	// Test Matii
+	public void queUnUsuarioNoPuedaDescargarDosVecesLaMismaCancion() {
+		// Preparación
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		usuario.setPremium(true);
+		Cancion cancion = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
+		
+		// Ejecución
+		cancion.descargar(usuario);
+		cancion.descargar(usuario);
+		HashSet<Cancion> listadoCancionesDescargadas = usuario.getCancionesDescargadas();
+		final Integer CANTIDAD_CANCIONES_DESCARGADAS = listadoCancionesDescargadas.size();
+		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
+		
+		
+		// Validación
+		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, CANTIDAD_CANCIONES_DESCARGADAS);
+	}
+	
+	@Test
+	// Test Matii
+	public void queDosUsuariosDistintosPuedanDescargarLaMismaCancion() {
+		// Preparación
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		UsuarioFinal usuario2 = new UsuarioFinal("José Pérez", "josep@gmail.com", "1234pass");
+		usuario.setPremium(true);
+		usuario2.setPremium(true);
+		Cancion cancion = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
+		
+		// Ejecución
+		cancion.descargar(usuario);
+		cancion.descargar(usuario2);
+		HashSet<Cancion> listadoCancionesDescargadas1 = usuario.getCancionesDescargadas();
+		HashSet<Cancion> listadoCancionesDescargadas2 = usuario2.getCancionesDescargadas();
+		final Integer CANTIDAD_CANCIONES_DESCARGADAS_USER1 = listadoCancionesDescargadas1.size();
+		final Integer CANTIDAD_CANCIONES_DESCARGADAS_USER2 = listadoCancionesDescargadas2.size();
+		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
+		
+		
+		// Validación
+		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, CANTIDAD_CANCIONES_DESCARGADAS_USER1);
+		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, CANTIDAD_CANCIONES_DESCARGADAS_USER2);
 	}
 
 }
