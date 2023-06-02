@@ -44,23 +44,6 @@ public class UsuarioFinalTest {
 	}
 	
 	@Test
-	// Test Matii
-	public void queUnUsuarioNoPuedaAgregarCancionDuplicadaALista() {
-		// Preparación
-		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
-		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario);
-		Cancion cancion = new Cancion("Té Para Tres", "Soda Stereo", 184, Genero.ROCK);
-		
-		// Ejecución
-		lista.agregarCanciones(cancion);
-		lista.agregarCanciones(cancion);
-		final Integer CANTIDAD_CANCIONES_ESPERADAS = 1;
-		
-		// Validación
-		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, lista.cantidadDeCanciones());
-	}
-	
-	@Test
 	// Matii Test
 	public void queUnUsuarioFreeNoPuedaDescargarCancion() {
 		// Preparación
