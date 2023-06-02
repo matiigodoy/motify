@@ -207,5 +207,22 @@ public class ListaDeReproduccionTest {
 		// Validación
 		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, lista.cantidadDeCanciones());
 	}
+	
+	@Test
+	// Test Matii
+	public void queUnaListaDeReproduccionPuedaTenerCancionesRepetidas() {
+		// Preparación
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		ListaDeReproduccion lista = new ListaDeReproduccion("Lista Repetida", usuario);
+		Cancion cancion1 = new Cancion("Cancion1", "Artista", 123, Genero.ROCK);
+		final Integer CANTIDAD_CANCIONES_ESPERADAS = 2;
+		
+		// Ejecución
+		lista.agregarCancion(cancion1, usuario.getPremium());
+		lista.agregarCancion(cancion1, usuario.getPremium());
+		
+		// Validación
+		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, lista.cantidadDeCanciones());
+	}
 
 }

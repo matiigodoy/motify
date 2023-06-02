@@ -9,13 +9,13 @@ public class ListaDeReproduccion {
 
 	private String nombre;
 	private UsuarioFinal propietario;
-	private HashSet<Cancion> canciones;
+	private List<Cancion> canciones;
 	private List<Cancion> cancionesDescargadas;
 
 	public ListaDeReproduccion(String nombre, UsuarioFinal usuario) {
 		this.nombre = nombre;
 		propietario = usuario;
-		canciones = new HashSet<Cancion>();
+		canciones = new ArrayList<Cancion>();
 		this.cancionesDescargadas = new ArrayList<Cancion>();
 	}
 
@@ -78,11 +78,11 @@ public class ListaDeReproduccion {
 		this.nombre = nombre;
 	}
 
-	public HashSet<Cancion> getCanciones() {
+	public List<Cancion> getCanciones() {
 		return canciones;
 	}
 
-	public void setCanciones(HashSet<Cancion> canciones) {
+	public void setCanciones(List<Cancion> canciones) {
 		this.canciones = canciones;
 	}
 
