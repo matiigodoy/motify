@@ -8,21 +8,15 @@ import java.util.Objects;
 public class ListaDeReproduccion {
 
 	private String nombre;
-	private String propietario;
-	private HashSet<Cancion> canciones;
-	private List<Cancion> cancionesDescargadas;
+	private UsuarioFinal propietario;
+	private List<Cancion> canciones;
 
-	public ListaDeReproduccion(String nombre, String propietario) {
+	public ListaDeReproduccion(String nombre, UsuarioFinal usuario) {
 		this.nombre = nombre;
-		this.propietario = propietario;
-		canciones = new HashSet<Cancion>();
-		this.cancionesDescargadas = new ArrayList<Cancion>();
+		propietario = usuario;
+		canciones = new ArrayList<Cancion>();
 	}
 
-	public Boolean descargarCancion(Cancion cancion, UsuarioFinal usuarioFinal) {
-		cancionesDescargadas.add(cancion);
-		return true;
-	}
 
 	public void agregarCanciones(Cancion cancion) {
 		if (cantidadDeCanciones() < 5) {
@@ -78,17 +72,14 @@ public class ListaDeReproduccion {
 		this.nombre = nombre;
 	}
 
-	public HashSet<Cancion> getCanciones() {
+	public List<Cancion> getCanciones() {
 		return canciones;
 	}
 
-	public void setCanciones(HashSet<Cancion> canciones) {
+	public void setCanciones(List<Cancion> canciones) {
 		this.canciones = canciones;
 	}
 
-	public List<Cancion> getCancionesDescargadas() {
-		return cancionesDescargadas;
-	}
 
 	public String duracionDeLaLista() {
 		Integer duracion = 0;
@@ -106,11 +97,11 @@ public class ListaDeReproduccion {
 		return duracionEnMmSs;
 	}
 
-	public String getPropietario() {
+	public UsuarioFinal getPropietario() {
 		return propietario;
 	}
 
-	public void setPropietario(String propietario) {
+	public void setPropietario(UsuarioFinal propietario) {
 		this.propietario = propietario;
 	}
 

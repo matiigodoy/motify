@@ -10,9 +10,10 @@ public class ListaDeReproduccionTest {
 	@Test
 	public void vDuracionTotalDeLaLista() {
 		// set up
-
+		UsuarioFinal usuario;
+		usuario = new UsuarioFinal("User Test", "user@test.com", "pass1234");
 		// exercise
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", "");
+		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", usuario);
 		Cancion cancion1 = new Cancion("Toxicity", "System Of A Down", 218, Genero.NUMETAL);
 		Cancion cancion2 = new Cancion("Call It Fate, Call It Karma", "The Strokes", 178, Genero.ROCK);
 		playlist.agregarCanciones(cancion1);
@@ -28,9 +29,10 @@ public class ListaDeReproduccionTest {
 	@Test
 	public void vVerListaDeCanciones() {
 		// set up
-
+		UsuarioFinal usuario;
+		usuario = new UsuarioFinal("User Test", "user@test.com", "pass1234");
 		// exercise
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", "");
+		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", usuario);
 
 		Cancion cancion1 = new Cancion("Toxicity", "System Of A Down", 218, Genero.NUMETAL);
 
@@ -46,9 +48,10 @@ public class ListaDeReproduccionTest {
 	@Test
 	public void vReproducirLista() {
 		// set up
-
+		UsuarioFinal usuario;
+		usuario = new UsuarioFinal("User Test", "user@test.com", "pass1234");
 		// exercise
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", "");
+		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", usuario);
 		Cancion cancion = new Cancion("Toxicity", "System Of A Down", 218, Genero.NUMETAL);
 
 		playlist.agregarCanciones(cancion);
@@ -64,9 +67,10 @@ public class ListaDeReproduccionTest {
 	public void vEliminarCanciones() {
 		// set up
 		Integer cantCanciones = 0;
-
+		UsuarioFinal usuario;
+		usuario = new UsuarioFinal("User Test", "user@test.com", "pass1234");
 		// exercise
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", "");
+		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", usuario);
 		Cancion cancion = new Cancion("Toxicity", "System Of A Down", 218, Genero.NUMETAL);
 
 		playlist.agregarCanciones(cancion);
@@ -80,9 +84,10 @@ public class ListaDeReproduccionTest {
 	public void vAgregarCancion() {
 		// set up
 		Integer cantCanciones = 1;
-
+		UsuarioFinal usuario;
+		usuario = new UsuarioFinal("User Test", "user@test.com", "pass1234");
 		// exercise
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", "");
+		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", usuario);
 		Cancion cancion = new Cancion("Toxicity", "System Of A Down", 218, Genero.NUMETAL);
 
 		playlist.agregarCanciones(cancion);
@@ -92,12 +97,6 @@ public class ListaDeReproduccionTest {
 	}
 
 	@Test
-	public void instanciarListaDeReproduccion() {
-		ListaDeReproduccion playlist = new ListaDeReproduccion("Musica para dormir", "");
-
-		assertNotNull(playlist);
-	}
-	@Test
 	// Test Matii
 	public void queSePuedaInstanciarListaDeReproduccion() {
 		// Preparación
@@ -105,11 +104,11 @@ public class ListaDeReproduccionTest {
 		UsuarioFinal usuario;
 		usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
 		final String NOMBRE_LISTA = "Hitazos";
-		final String PROPIETARIO_ESPERADO = "Matii Godoy";
+		final UsuarioFinal PROPIETARIO_ESPERADO = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
 		final Integer CANTIDAD_CANCIONES_ESPERADAS = 0;
 
 		// Ejecución
-		lista = new ListaDeReproduccion(NOMBRE_LISTA, usuario.getNombre());
+		lista = new ListaDeReproduccion(NOMBRE_LISTA, usuario);
 
 		// Validación
 		assertNotNull(lista);
@@ -122,7 +121,7 @@ public class ListaDeReproduccionTest {
 	public void queLaDuracionDeLaListaTengaFormatoMmSs() {
 		// Preparación
 		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
-		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario.getNombre());
+		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario);
 		Cancion cancion1 = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
 		Cancion cancion2 = new Cancion("Médium", "Gustavo Cerati", 333, Genero.ROCK);
 		final String DURACION_ESPERADA = "8:37";
@@ -141,7 +140,7 @@ public class ListaDeReproduccionTest {
 	public void queUsuarioFreeNoPuedaSubirMasDe10Canciones() {
 		// Preparación
 		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
-		ListaDeReproduccion lista = new ListaDeReproduccion("Lista Free", usuario.getNombre());
+		ListaDeReproduccion lista = new ListaDeReproduccion("Lista Free", usuario);
 		Cancion cancion1 = new Cancion("Cancion1", "Artista", 123, Genero.ROCK);
 		Cancion cancion2 = new Cancion("Cancion2", "Artista", 123, Genero.ROCK);
 		Cancion cancion3 = new Cancion("Cancion3", "Artista", 123, Genero.ROCK);
@@ -178,7 +177,7 @@ public class ListaDeReproduccionTest {
 		// Preparación
 		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
 		usuario.setPremium(true);
-		ListaDeReproduccion lista = new ListaDeReproduccion("Lista Free", usuario.getNombre());
+		ListaDeReproduccion lista = new ListaDeReproduccion("Lista Free", usuario);
 		Cancion cancion1 = new Cancion("Cancion1", "Artista", 123, Genero.ROCK);
 		Cancion cancion2 = new Cancion("Cancion2", "Artista", 123, Genero.ROCK);
 		Cancion cancion3 = new Cancion("Cancion3", "Artista", 123, Genero.ROCK);
@@ -204,6 +203,23 @@ public class ListaDeReproduccionTest {
 		lista.agregarCancion(cancion9, usuario.getPremium());
 		lista.agregarCancion(cancion10, usuario.getPremium());
 		lista.agregarCancion(cancion11, usuario.getPremium());
+		
+		// Validación
+		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, lista.cantidadDeCanciones());
+	}
+	
+	@Test
+	// Test Matii
+	public void queUnaListaDeReproduccionPuedaTenerCancionesRepetidas() {
+		// Preparación
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		ListaDeReproduccion lista = new ListaDeReproduccion("Lista Repetida", usuario);
+		Cancion cancion1 = new Cancion("Cancion1", "Artista", 123, Genero.ROCK);
+		final Integer CANTIDAD_CANCIONES_ESPERADAS = 2;
+		
+		// Ejecución
+		lista.agregarCancion(cancion1, usuario.getPremium());
+		lista.agregarCancion(cancion1, usuario.getPremium());
 		
 		// Validación
 		assertEquals(CANTIDAD_CANCIONES_ESPERADAS, lista.cantidadDeCanciones());

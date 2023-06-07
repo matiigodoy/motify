@@ -93,7 +93,7 @@ public class BaseDeDatosTest {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
 		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
-		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario.getNombre());
+		ListaDeReproduccion lista = new ListaDeReproduccion("Hitazos", usuario);
 		Cancion cancion1 = new Cancion("Té para tres", "Soda stereo", 184, Genero.ROCK);
 		Cancion cancion2 = new Cancion("Médium", "Gustavo Cerati", 333, Genero.ROCK);
 		lista.agregarCanciones(cancion1);
@@ -113,13 +113,32 @@ public class BaseDeDatosTest {
 		// Preparación
 		BaseDeDatos bbdd = new BaseDeDatos();
 		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
-		ListaDeReproduccion lista1 = new ListaDeReproduccion("Hitazos", usuario.getNombre());
-		ListaDeReproduccion lista2 = new ListaDeReproduccion("Hitazos", usuario.getNombre());
+		ListaDeReproduccion lista1 = new ListaDeReproduccion("Hitazos", usuario);
+		ListaDeReproduccion lista2 = new ListaDeReproduccion("Hitazos", usuario);
 		
 		// Ejecución
 		bbdd.agregarListaDeReproduccion(lista1);
 		bbdd.agregarListaDeReproduccion(lista2);
 		final Integer CANTIDAD_ESPERADA_LISTAS = 1;
+		
+		// Validación
+		assertEquals(CANTIDAD_ESPERADA_LISTAS, bbdd.getCantidadDeListasDeReproduccion());
+	}
+	
+	@Test
+	// Test Matii
+	public void queSePuedaGuardarListaDeReproduccionConMismoNombrePeroDistintoPropietario() {
+		// Preparación
+		BaseDeDatos bbdd = new BaseDeDatos();
+		UsuarioFinal usuario = new UsuarioFinal("Matii Godoy", "matii@gmail.com", "pass1234");
+		UsuarioFinal usuario2 = new UsuarioFinal("José Pérez", "josep@gmail.com", "1234pass");
+		ListaDeReproduccion lista1 = new ListaDeReproduccion("Hitazos", usuario);
+		ListaDeReproduccion lista2 = new ListaDeReproduccion("Hitazos", usuario2);
+		
+		// Ejecución
+		bbdd.agregarListaDeReproduccion(lista1);
+		bbdd.agregarListaDeReproduccion(lista2);
+		final Integer CANTIDAD_ESPERADA_LISTAS = 2;
 		
 		// Validación
 		assertEquals(CANTIDAD_ESPERADA_LISTAS, bbdd.getCantidadDeListasDeReproduccion());
